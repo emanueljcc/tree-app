@@ -58,7 +58,7 @@ const CreateScreen = () => {
 
 	return (
 		<>
-			{parents && (
+			{parents && parents.length > 0 && (
 				<View style={styles.margin}>
 					<DropDown
 						label="Parent"

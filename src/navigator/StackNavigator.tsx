@@ -2,7 +2,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {CustomNavigationBar} from '@components';
-import {NodeScreen, ParentScreen} from '@screens';
+import {NodeScreen, ParentScreen, CreateScreen} from '@screens';
 import {ParentNode} from '@interfaces';
 
 export type RootStackParams = {
@@ -10,6 +10,7 @@ export type RootStackParams = {
 	NodeScreen: {
 		item: ParentNode;
 	};
+	CreateScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParams>();
@@ -35,8 +36,13 @@ export const StackNavigator = () => {
 			/>
 			<Stack.Screen
 				name="NodeScreen"
-				options={{title: 'NodeScreen'}}
+				options={{title: 'Node'}}
 				component={NodeScreen}
+			/>
+			<Stack.Screen
+				name="CreateScreen"
+				options={{title: 'Create Node'}}
+				component={CreateScreen}
 			/>
 		</Stack.Navigator>
 	);

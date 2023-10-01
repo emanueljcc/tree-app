@@ -13,11 +13,12 @@ const CardComponent = ({data, isLoading}: TCardComponent) => {
 	}
 
 	if (data?.translation?.length === 0) {
-		return <Text>Seleccione un idioma...</Text>;
+		return <Text style={styles.text}>Select a different language...</Text>;
 	}
 
 	return (
 		<>
+			{data && <Text style={styles.text}>Original Title: {data.title}</Text>}
 			{data?.translation && data?.translation.length && (
 				<Card style={styles.card}>
 					<Card.Title
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
 		margin: 4,
 		marginTop: 15,
 	},
+	text: {marginHorizontal: 12, marginTop: 15},
 });
 
 export default CardComponent;

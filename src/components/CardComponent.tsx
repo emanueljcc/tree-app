@@ -2,6 +2,7 @@ import {Avatar, Card, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 
 import {ParentNode} from '@interfaces';
+import BasicLoader from './BasicLoader';
 
 type TCardComponent = {
 	data: ParentNode | null;
@@ -9,7 +10,7 @@ type TCardComponent = {
 };
 const CardComponent = ({data, isLoading}: TCardComponent) => {
 	if (isLoading) {
-		return <Text>Loading...</Text>;
+		return <BasicLoader />;
 	}
 
 	if (data?.translation?.length === 0) {

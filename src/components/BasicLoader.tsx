@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {ActivityIndicator, StyleSheet} from 'react-native';
 
 const BasicLoader = () => {
@@ -10,4 +11,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default BasicLoader;
+export default memo(BasicLoader);

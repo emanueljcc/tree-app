@@ -4,8 +4,6 @@ import Toast from 'react-native-toast-message';
 
 export const rtkQueryErrorLogger: Middleware = () => next => action => {
 	if (isRejectedWithValue(action)) {
-		console.log('action => ', action);
-
 		const errResponses = {
 			status: action?.payload?.status || action?.payload.originalStatus,
 			message:

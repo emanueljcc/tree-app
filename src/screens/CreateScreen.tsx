@@ -1,6 +1,6 @@
 import DropDown from 'react-native-paper-dropdown';
 import {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 
@@ -59,7 +59,7 @@ const CreateScreen = () => {
 	return (
 		<>
 			{parents && (
-				<View style={{margin: 15}}>
+				<View style={styles.margin}>
 					<DropDown
 						label="Parent"
 						mode="outlined"
@@ -69,13 +69,14 @@ const CreateScreen = () => {
 						value={parentSelected}
 						setValue={handleSelection}
 						list={listParents as never}
+						dropDownItemTextStyle={styles.textDark}
 					/>
 				</View>
 			)}
 			<SelectLocale />
 
 			<Button
-				style={{margin: 15}}
+				style={styles.margin}
 				loading={isLoadingSave}
 				disabled={
 					isLoadingSave || parentSelected === '' || localeSelected === ''
@@ -88,5 +89,10 @@ const CreateScreen = () => {
 		</>
 	);
 };
+
+const styles = StyleSheet.create({
+	margin: {margin: 15},
+	textDark: {color: '#808080'},
+});
 
 export default CreateScreen;

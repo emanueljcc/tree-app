@@ -1,6 +1,6 @@
 import DropDown from 'react-native-paper-dropdown';
 import {useState} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {useGetLocalesQuery} from '@services/api/apiSlice';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
@@ -26,7 +26,7 @@ const SelectLocale = () => {
 		return <BasicLoader />;
 	}
 	return (
-		<View style={{marginHorizontal: 15}}>
+		<View style={styles.margin}>
 			{isLoading && <BasicLoader />}
 
 			{data && (
@@ -39,10 +39,16 @@ const SelectLocale = () => {
 					value={locale || localeSelected}
 					setValue={handleSelection}
 					list={data as never}
+					dropDownItemTextStyle={styles.textDark}
 				/>
 			)}
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	margin: {marginHorizontal: 15},
+	textDark: {color: '#808080'},
+});
 
 export default SelectLocale;

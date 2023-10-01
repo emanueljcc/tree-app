@@ -1,5 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
+import {Locales, ParentNode} from '@interfaces';
+import {GetDataArgs} from './interfaces';
+
 // TODO: create .env?
 const API_URL = 'https://api-graph.tests.grupoapok.com/api';
 
@@ -16,8 +19,20 @@ export const apiSlice = createApi({
 	tagTypes: [''],
 	endpoints: builder => ({
 		// !GET ENDPOINTS
-		getParents: builder.query<any, void>({
-			query: () => '/nodes',
+		getDataParent: builder.query<ParentNode[], GetDataArgs | null>({
+			query: data => (data ? `/nodes?parent=${data.parent}` : '/nodes'),
+		}),
+		getNode: builder.query<ParentNode[], GetDataArgs | null>({
+			query: data => `/node/${data?.parent}?locale=${data.locale}`,
+		}),
+		getLocales: builder.query<Locales[], void>({
+			query: () => '/locales',
+			transformResponse: (response: Locales[]) => {
+				return response.map(res => ({
+					label: res.label,
+					value: res.locale,
+				}));
+			},
 		}),
 
 		// !POST ENDPOINTS
@@ -25,4 +40,9 @@ export const apiSlice = createApi({
 	}),
 });
 
-export const {useGetParentsQuery} = apiSlice;
+export const {
+	useGetDataParentQuery,
+	useLazyGetDataParentQuery,
+	useLazyGetNodeQuery,
+	useGetLocalesQuery,
+} = apiSlice;

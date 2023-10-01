@@ -1,3 +1,29 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+	"compilerOptions": {
+		"lib": [
+      "DOM"
+    ],
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react-jsx",
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": [
+        "src/*"
+      ],
+			"@components/*": ["./src/components/*"],
+			"@screens/*": ["src/screens/*"],
+			"@interfaces/*": ["./src/interfaces/*"],
+
+			"@navigator": ["src/navigator"],
+			"@services": ["src/services"],
+			"@utils/*": ["./src/utils/*"],
+			"@store/*": ["./src/store/*"],
+    }
+  },
 }

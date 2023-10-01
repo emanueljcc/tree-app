@@ -16,7 +16,7 @@ const rootPersistConfig = {
 	version: 1,
 	storage: AsyncStorage,
 	// only persist states reducers
-	whitelist: [],
+	whitelist: ['locale'],
 };
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

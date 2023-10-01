@@ -53,6 +53,7 @@ export const apiSlice = createApi({
 				url: `/node/${id}`,
 				method: 'DELETE',
 			}),
+			invalidatesTags: ['Node', 'ParentNode'],
 		}),
 	}),
 });

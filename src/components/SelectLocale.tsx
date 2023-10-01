@@ -1,10 +1,11 @@
 import DropDown from 'react-native-paper-dropdown';
 import {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 
 import {useGetLocalesQuery} from '@services/api/apiSlice';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
 import {setValue} from '@store/localeSlice';
+import BasicLoader from './BasicLoader';
 
 const SelectLocale = () => {
 	const dispatch = useAppDispatch();
@@ -22,11 +23,11 @@ const SelectLocale = () => {
 	};
 
 	if (isLoading) {
-		return <Text>Loading locales...</Text>;
+		return <BasicLoader />;
 	}
 	return (
 		<View style={{marginHorizontal: 15}}>
-			{isLoading && <Text>Loading locales...</Text>}
+			{isLoading && <BasicLoader />}
 
 			{data && (
 				<DropDown
